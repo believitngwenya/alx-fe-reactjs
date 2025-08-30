@@ -1,9 +1,10 @@
 function Header() {
   return (
     <header>
-      <h1>My Favorite Genre of Books</h1>
+      <h1>My Favorite Cities</h1>
     </header>
   );
 }
 
 export default Header;
+

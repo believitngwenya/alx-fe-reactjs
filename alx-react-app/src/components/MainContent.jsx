@@ -1,9 +1,10 @@
 function MainContent() {
   return (
     <main>
-      <p>I love to Read Romance, Thriller and Self-Help Books.</p>
+      <p>I love to visit New York, Paris, and Tokyo.</p>
     </main>
   );
 }
 
 export default MainContent;
+
