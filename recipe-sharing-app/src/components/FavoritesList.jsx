@@ -1,22 +1,63 @@
 import { useRecipeStore } from "./recipeStore";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import DeleteRecipeButton from "./DeleteRecipeButton";
+import AddToFavoritesButton from "./AddToFavoritesButton";
+import SearchBar from "./SearchBar";
 
-export default function DeleteRecipeButton({ recipeId }) {
-  const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
-  const navigate = useNavigate();
-  const btnStyle = {
-    color: "white",
-    backgroundColor: "orangered",
-  };
+export default function FavoritesList() {
+  const favorites = useRecipeStore((state) => state.favorites);
+  const recipes = useRecipeStore((state) => state.recipes);
 
-  const handleDelete = () => {
-    deleteRecipe(recipeId);
-    navigate("/list");
+  const searchTerm = useRecipeStore((state) => state.searchTerm);
+  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
+
+  // Decide which recipes to show (all or filtered)
+  const recipesToDisplay = searchTerm ? filteredRecipes : recipes;
+
+  // Only keep recipes that are in favorites
+  const favoriteRecipes = recipesToDisplay.filter((recipe) =>
+    favorites.includes(recipe.id)
+  );
+
+  // Styling for each recipe card
+  const recipeContainer = {
+    border: "1px solid hsla(0, 0%, 100%, 0.45)",
+    borderRadius: "10px",
+    padding: "1rem",
+    marginTop: "1rem",
+    width: "650px",
+    fontSize: "1rem",
   };
 
   return (
-    <button style={btnStyle} onClick={handleDelete}>
-      Delete
-    </button>
+    <div>
+      <SearchBar />
+      <h2>My Favorites</h2>
+
+      {favoriteRecipes.length > 0 ? (
+        favoriteRecipes.map((recipe) => (
+          <div style={recipeContainer} key={recipe.id}>
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+
+            {/* Buttons for actions */}
+            <DeleteRecipeButton recipeId={recipe.id} />
+            &nbsp;&nbsp;
+            <Link to={`/edit/${recipe.id}`}>
+              <button>Edit recipe</button>
+            </Link>
+            &nbsp;&nbsp;
+            <Link to={`/recipe/${recipe.id}`}>
+              <button>View details</button>
+            </Link>
+            <br />
+            <br />
+            <AddToFavoritesButton recipeId={recipe.id} />
+          </div>
+        ))
+      ) : (
+        <p>No favorites found</p>
+      )}
+    </div>
   );
 }
