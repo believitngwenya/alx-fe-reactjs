@@ -1,10 +1,10 @@
 // src/components/Search.jsx
 import React, { useState } from "react";
-import { searchUsers, fetchUserData } from "../services/githubService"; // ✅ import fetchUserData
+import { searchUsers } from "../services/githubService";
 
 function Search() {
   const [query, setQuery] = useState("");
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState(""); //
   const [minRepos, setMinRepos] = useState(0);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -42,6 +42,7 @@ function Search() {
           required
         />
 
+        {/* ✅ Location input */}
         <input
           type="text"
           placeholder="Filter by location (e.g. South Africa)"
@@ -50,6 +51,7 @@ function Search() {
           className="w-full px-4 py-2 border rounded"
         />
 
+        {/* Optional: Minimum Repos input */}
         <input
           type="number"
           placeholder="Minimum number of public repos"
@@ -76,12 +78,7 @@ function Search() {
             {results.map((user) => (
               <div
                 key={user.id}
-                className="border rounded p-4 flex items-center space-x-4 cursor-pointer hover:bg-gray-100"
-                onClick={async () => {
-                  // ✅ combine fetchUserData here
-                  const details = await fetchUserData(user.login);
-                  console.log(details); // you can replace this with setState to display details
-                }}
+                className="border rounded p-4 flex items-center space-x-4"
               >
                 <img
                   src={user.avatar_url}
