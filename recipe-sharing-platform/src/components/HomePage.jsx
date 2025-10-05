@@ -1,88 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import recipeData from '../data.json';
+import React, { useEffect, useState } from "react";
+import data from "../data.json"; // adjust the path if data.json is in src/
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(true);
+function HomePage() {
+  const [recipes, setUsers] = useState([]);
 
   useEffect(() => {
-    // Load recipe data from JSON file
-    const loadRecipes = () => {
-      try {
-        setRecipes(recipeData);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error loading recipes:', error);
-        setLoading(false);
-      }
-    };
-
-    // Simulate API call delay
-    setTimeout(() => {
-      loadRecipes();
-    }, 500);
+    // Load data directly from imported JSON
+    setUsers(data);
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-xl text-gray-600">Loading recipes...</div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-2">
-          Delicious Recipes
-        </h1>
-        <p className="text-center text-gray-600 mb-8">
-          Discover amazing recipes to try at home
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <div>
+      <h1 className="my-8 font-bold text-center text-2xl">
+        Recipe Sharing Platform
+      </h1>
+      <div className="text-center mb-6">
+        <Link
+          to="/add-recipe"
+          className="bg-green-600 text-white font-medium px-4 py-2 rounded-lg hover:bg-green-700 transition"
+        >
+          + Add New Recipe
+        </Link>
+      </div>
+      {recipes.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
+        <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-20 lg:grid-cols-3 lg:gap-20 gap-10 justify-items-center">
           {recipes.map((recipe) => (
-            <div
-              key={recipe.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-            >
-              {/* Recipe Image */}
-              <div className="h-48 bg-gray-200">
+            <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+              <li className="w-80 bg-white rounded-xl shadow-md p-6 transform transition duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                <p className="text-center font-bold text-lg md:text-xl py-4">
+                  {recipe.title}
+                </p>
                 <img
+                  className="w-80 h-60 object-cover rounded-md"
                   src={recipe.image}
                   alt={recipe.title}
-                  className="w-full h-full object-cover"
                 />
-              </div>
-
-              {/* Recipe Content */}
-              <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-3">
-                  {recipe.title}
-                </h2>
-                
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                <p className="text-center my-4 text-gray-600 text-sm">
                   {recipe.summary}
                 </p>
-
-                {/* View Recipe Button */}
-                <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
-                  View Recipe
-                </button>
-              </div>
-            </div>
+              </li>
+            </Link>
           ))}
-        </div>
-
-        {recipes.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No recipes found.</p>
-          </div>
-        )}
-      </div>
+        </ul>
+      )}
     </div>
   );
-};
+}
 
 export default HomePage;
