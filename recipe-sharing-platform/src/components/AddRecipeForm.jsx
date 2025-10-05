@@ -8,11 +8,25 @@ function AddRecipeForm() {
   });
   const [errors, setErrors] = useState({});
 
-  // Handle input change
+  // Handle input change - MODIFIED to explicitly use e.target.value and e.target.name
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    // Explicitly accessing the event target properties
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value;
+    
+    setFormData({ 
+      ...formData, 
+      [fieldName]: fieldValue 
+    });
   };
+
+  // Alternative way to write the same function:
+  // const handleChange = (e) => {
+  //   setFormData({ 
+  //     ...formData, 
+  //     [e.target.name]: e.target.value 
+  //   });
+  // };
 
   // Validate inputs
   const validate = () => {
@@ -25,9 +39,11 @@ function AddRecipeForm() {
     return newErrors;
   };
 
-  // Handle submit
+  // Handle submit - MODIFIED to show e.preventDefault() usage
   const handleSubmit = (e) => {
+    // Prevent the default form submission behavior
     e.preventDefault();
+    
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -35,7 +51,7 @@ function AddRecipeForm() {
       setErrors({});
       console.log("Form submitted:", formData);
       alert("Recipe submitted successfully!");
-      // reset form
+      // Reset form
       setFormData({ title: "", ingredients: "", steps: "" });
     }
   };
@@ -55,7 +71,13 @@ function AddRecipeForm() {
             type="text"
             name="title"
             value={formData.title}
-            onChange={handleChange}
+            onChange={(e) => {
+              // Using e.target.value directly in the onChange
+              setFormData({
+                ...formData,
+                title: e.target.value
+              });
+            }}
             className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
             placeholder="Enter recipe title"
           />
@@ -72,7 +94,13 @@ function AddRecipeForm() {
           <textarea
             name="ingredients"
             value={formData.ingredients}
-            onChange={handleChange}
+            onChange={(e) => {
+              // Using e.target.value directly in the onChange
+              setFormData({
+                ...formData,
+                ingredients: e.target.value
+              });
+            }}
             rows="4"
             className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
             placeholder="List ingredients, one per line"
@@ -90,7 +118,13 @@ function AddRecipeForm() {
           <textarea
             name="steps"
             value={formData.steps}
-            onChange={handleChange}
+            onChange={(e) => {
+              // Using e.target.value directly in the onChange
+              setFormData({
+                ...formData,
+                steps: e.target.value
+              });
+            }}
             rows="6"
             className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
             placeholder="Describe preparation steps"
