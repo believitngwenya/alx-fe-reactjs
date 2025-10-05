@@ -6,11 +6,10 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading data from JSON file
+    // Load recipe data from JSON file
     const loadRecipes = () => {
       try {
-        // In a real app, you might fetch this from an API
-        setRecipes(recipeData.recipes);
+        setRecipes(recipeData);
         setLoading(false);
       } catch (error) {
         console.error('Error loading recipes:', error);
@@ -49,59 +48,23 @@ const HomePage = () => {
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               {/* Recipe Image */}
-              <div className="h-48 bg-gray-200 flex items-center justify-center">
-                {recipe.image ? (
-                  <img
-                    src={recipe.image}
-                    alt={recipe.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-gray-500">No Image</span>
-                )}
+              <div className="h-48 bg-gray-200">
+                <img
+                  src={recipe.image}
+                  alt={recipe.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Recipe Content */}
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                <h2 className="text-xl font-semibold text-gray-800 mb-3">
                   {recipe.title}
                 </h2>
                 
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                  {recipe.description}
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  {recipe.summary}
                 </p>
-
-                {/* Recipe Details */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                    ⏱️ {recipe.cookingTime} min
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                    {recipe.difficulty}
-                  </span>
-                </div>
-
-                {/* Ingredients */}
-                <div className="mb-4">
-                  <h3 className="text-sm font-medium text-gray-700 mb-2">
-                    Main Ingredients:
-                  </h3>
-                  <div className="flex flex-wrap gap-1">
-                    {recipe.ingredients.slice(0, 3).map((ingredient, index) => (
-                      <span
-                        key={index}
-                        className="inline-block bg-gray-100 rounded-full px-2 py-1 text-xs text-gray-600"
-                      >
-                        {ingredient}
-                      </span>
-                    ))}
-                    {recipe.ingredients.length > 3 && (
-                      <span className="inline-block bg-gray-100 rounded-full px-2 py-1 text-xs text-gray-600">
-                        +{recipe.ingredients.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
 
                 {/* View Recipe Button */}
                 <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">

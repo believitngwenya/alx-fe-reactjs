@@ -1,40 +1,50 @@
-{
-  "recipes": [
-    {
-      "id": 1,
-      "title": "Spaghetti Carbonara",
-      "description": "A classic Italian pasta dish with eggs, cheese, pancetta, and pepper.",
-      "cookingTime": 20,
-      "ingredients": ["spaghetti", "eggs", "pecorino cheese", "pancetta", "black pepper"],
-      "difficulty": "Medium",
-      "image": "/images/carbonara.jpg"
-    },
-    {
-      "id": 2,
-      "title": "Chicken Stir Fry",
-      "description": "Quick and healthy chicken stir fry with fresh vegetables.",
-      "cookingTime": 15,
-      "ingredients": ["chicken breast", "bell peppers", "broccoli", "soy sauce", "garlic"],
-      "difficulty": "Easy",
-      "image": "/images/stir-fry.jpg"
-    },
-    {
-      "id": 3,
-      "title": "Chocolate Chip Cookies",
-      "description": "Soft and chewy chocolate chip cookies that melt in your mouth.",
-      "cookingTime": 25,
-      "ingredients": ["flour", "butter", "chocolate chips", "sugar", "eggs", "vanilla"],
-      "difficulty": "Easy",
-      "image": "/images/cookies.jpg"
-    },
-    {
-      "id": 4,
-      "title": "Beef Tacos",
-      "description": "Flavorful beef tacos with fresh toppings and homemade seasoning.",
-      "cookingTime": 30,
-      "ingredients": ["ground beef", "taco shells", "lettuce", "tomato", "cheese", "sour cream"],
-      "difficulty": "Medium",
-      "image": "/images/tacos.jpg"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/400x300/FF6B6B/FFFFFF?text=Spaghetti+Carbonara"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://via.placeholder.com/400x300/4ECDC4/FFFFFF?text=Chicken+Tikka+Masala"
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir Fry",
+    "summary": "Quick and healthy stir fry with fresh seasonal vegetables and soy sauce.",
+    "image": "https://via.placeholder.com/400x300/45B7D1/FFFFFF?text=Vegetable+Stir+Fry"
+  },
+  {
+    "id": 4,
+    "title": "Chocolate Chip Cookies",
+    "summary": "Soft and chewy homemade chocolate chip cookies that melt in your mouth.",
+    "image": "https://via.placeholder.com/400x300/F7DC6F/FFFFFF?text=Chocolate+Cookies"
+  },
+  {
+    "id": 5,
+    "title": "Beef Tacos",
+    "summary": "Crispy tacos filled with seasoned ground beef and fresh toppings.",
+    "image": "https://via.placeholder.com/400x300/BB8FCE/FFFFFF?text=Beef+Tacos"
+  },
+  {
+    "id": 6,
+    "title": "Greek Salad",
+    "summary": "Fresh Mediterranean salad with feta cheese, olives, and vegetables.",
+    "image": "https://via.placeholder.com/400x300/52BE80/FFFFFF?text=Greek+Salad"
+  },
+  {
+    "id": 7,
+    "title": "Mushroom Risotto",
+    "summary": "Creamy Italian rice dish cooked with mushrooms and parmesan cheese.",
+    "image": "https://via.placeholder.com/400x300/F8C471/FFFFFF?text=Mushroom+Risotto"
+  },
+  {
+    "id": 8,
+    "title": "Blueberry Pancakes",
+    "summary": "Fluffy pancakes loaded with fresh blueberries and maple syrup.",
+    "image": "https://via.placeholder.com/400x300/EB984E/FFFFFF?text=Blueberry+Pancakes"
+  }
+]
