@@ -1,0 +1,40 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "title": "Spaghetti Carbonara",
+      "description": "A classic Italian pasta dish with eggs, cheese, pancetta, and pepper.",
+      "cookingTime": 20,
+      "ingredients": ["spaghetti", "eggs", "pecorino cheese", "pancetta", "black pepper"],
+      "difficulty": "Medium",
+      "image": "/images/carbonara.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Chicken Stir Fry",
+      "description": "Quick and healthy chicken stir fry with fresh vegetables.",
+      "cookingTime": 15,
+      "ingredients": ["chicken breast", "bell peppers", "broccoli", "soy sauce", "garlic"],
+      "difficulty": "Easy",
+      "image": "/images/stir-fry.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Chocolate Chip Cookies",
+      "description": "Soft and chewy chocolate chip cookies that melt in your mouth.",
+      "cookingTime": 25,
+      "ingredients": ["flour", "butter", "chocolate chips", "sugar", "eggs", "vanilla"],
+      "difficulty": "Easy",
+      "image": "/images/cookies.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Beef Tacos",
+      "description": "Flavorful beef tacos with fresh toppings and homemade seasoning.",
+      "cookingTime": 30,
+      "ingredients": ["ground beef", "taco shells", "lettuce", "tomato", "cheese", "sour cream"],
+      "difficulty": "Medium",
+      "image": "/images/tacos.jpg"
+    }
+  ]
+}
